@@ -25,5 +25,9 @@ RUN cd /root && git clone https://github.com/BVLC/caffe.git && cd caffe && \
   cp Makefile.config.example Makefile.config && \
 # Make
   make -j"$(nproc)" all
+  
 # Set ~/caffe as working directory
+
+RUN apt-get -y install python-setuptools
+
 WORKDIR /root/caffe
