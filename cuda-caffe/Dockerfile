@@ -25,9 +25,23 @@ RUN cd /root && git clone https://github.com/BVLC/caffe.git && cd caffe && \
   cp Makefile.config.example Makefile.config && \
 # Make
   make -j"$(nproc)" all
-  
+
+# Install easy_install & pip
+RUN apt-get install -y \
+  python-setuptools \
+  python-pip
+
+RUN apt-get install -y \
+  gfortran \
+  python-numpy \
+  python-scipy
+
+# Make pycaffe
+RUN cd /root/caffe/python \
+  for req in $(cat requirements.txt); do pip install $req; done \
+  cd .. \
+  make pycaffe \
+  make distribute
+
 # Set ~/caffe as working directory
-
-RUN apt-get -y install python-setuptools
-
 WORKDIR /root/caffe
