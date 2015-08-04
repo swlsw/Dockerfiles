@@ -13,9 +13,6 @@ RUN echo 'root:root' |chpasswd
 RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 
-EXPOSE 22
-CMD    ["/usr/sbin/sshd", "-D"]
-
 # CUDA version - as the kernel is shared the host and container must correspond
 ENV CUDA_MAJOR=7.0 \
     CUDA_VERSION=7.0.28 \
@@ -96,3 +93,6 @@ RUN cd /root/caffe && \
 
 # Set ~/caffe as working directory
 WORKDIR /root/caffe
+
+EXPOSE 22
+CMD ["/usr/sbin/sshd", "-D"]
