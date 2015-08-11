@@ -106,5 +106,5 @@ RUN cd /root && git clone https://github.com/NVIDIA/DIGITS.git digits && cd digi
 # Set ~/caffe as working directory
 WORKDIR /root/digits
 
-EXPOSE 22, 8080
+EXPOSE 22 8080
 CMD ["/usr/sbin/sshd", "-D"]
