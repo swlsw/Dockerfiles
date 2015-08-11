@@ -64,6 +64,8 @@ RUN \
     cd root && git clone --branch caffe-0.13 https://github.com/NVIDIA/caffe.git && cd caffe && \
     # Copy Makefile
     cp Makefile.config.example Makefile.config && \
+    # Disable cuDNN
+    sed -i 's/USE_CUDNN/# USE_CUDNN/g' Makefile.config && \
     # Make
     make -j"$(nproc)" all
     # Set ~/caffe as working directory
