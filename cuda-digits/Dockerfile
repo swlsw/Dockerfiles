@@ -65,7 +65,7 @@ RUN \
     # Copy Makefile
     cp Makefile.config.example Makefile.config && \
     # Disable cuDNN
-    sed -i 's/USE_CUDNN/# USE_CUDNN/g' Makefile.config && \
+    # sed -i 's/USE_CUDNN/# USE_CUDNN/g' Makefile.config && \
     # Make
     make -j"$(nproc)" all
     # Set ~/caffe as working directory
