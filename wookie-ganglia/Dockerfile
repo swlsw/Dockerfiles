@@ -50,7 +50,7 @@ RUN cd /usr/src && \
 RUN cd /root && \
     git clone https://github.com/ganglia/gmond_python_modules.git && \
     cd ./gmond_python_modules/gpu/nvidia && \
-    cp ./python_modules/nvidia.py /usr/lib/ganglia/python_modules/ && \
+    # cp ./python_modules/nvidia.py /usr/lib/ganglia/python_modules/ && \
     cp ./conf.d/nvidia.pyconf /etc/ganglia/conf.d/ && \
     cp ./graph.d/* /var/www/html/ganglia/graph.d/
 
