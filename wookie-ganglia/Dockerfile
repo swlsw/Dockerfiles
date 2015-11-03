@@ -46,6 +46,14 @@ RUN cd /usr/src && \
     make install && \
     rm -rf /usr/src/ganglia-web-3.5.10*
 
+# ganglia python plugin for Nvidia GPU Monitoring
+RUN cd /root && \
+    git clone https://github.com/ganglia/gmond_python_modules.git && \
+    cd ./gmond_python_modules/gpu/nvidia && \
+    cp ./python_modules/nvidia.py /usr/lib64/ganglia/python_modules/ && \
+    cp ./conf.d/nvidia.pyconf /etc/ganglia/conf.d/ && \
+    cp ./graph.d/* /var/www/html/ganglia/graph.d/
+
 # add the ganglia user and group
 RUN useradd -r -U -d /var/lib/ganglia -s /bin/false ganglia
 
