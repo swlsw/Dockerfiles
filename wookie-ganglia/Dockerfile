@@ -7,7 +7,7 @@ RUN yum upgrade -y && \
     yum install -y \
       gcc-c++ automake make \
       apr-devel expat-devel rrdtool-devel zlib-devel \
-      httpd php rsync wget tar && \
+      httpd php rsync wget tar git && \
     yum clean all
 
 # pcre dependency
@@ -71,5 +71,5 @@ ADD start.sh start.sh
 # default is with gmond for seeing something
 # CMD ["--with-gmond"]
 
-EXPOSE 22
-CMD ["/usr/sbin/sshd", "-D"]
+# EXPOSE 22
+# CMD ["/usr/sbin/sshd", "-D"]
